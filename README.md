@@ -1,2 +1,4 @@
 # cpp_example_project
-Learn Cpp
+[![Build Status](https://travis-ci.com/tbjoss/cpp_example_project.svg?branch=main)](https://travis-ci.com/tbjoss/cpp_example_project)
+
+## Learn Cpp
