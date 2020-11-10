@@ -14,7 +14,8 @@ jobs:
     - os: linux
       dist: bionic
       compiler: gcc
-
+      env:
+        - MATRIX_EVAL="CC=gcc && CXX=g++"
       addons:
         apt:
           sources:
@@ -22,8 +23,22 @@ jobs:
           packages:
             - gcc
             - python3-pip
+      after_script:
+        - bash <(curl -s https://codecov.io/bash)
+
+    - os: linux
+      dist: bionic
+      compiler: clang
+      env:
+        - MATRIX_EVAL="CC=clang && CXX=clang++"
+      addons: { apt: { packages: ['python3-pip'] } }
+
+before_script:
+  - eval "${MATRIX_EVAL}"
+
 script:
   - mkdir build
   - cd build
   - cmake ..
   - cmake --build . -- -j2
+  - ctest -j2
