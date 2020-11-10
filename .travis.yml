@@ -21,6 +21,7 @@ jobs:
             - ubuntu-toolchain-r-test
           packages:
             - gcc
+            - python3-pip
 script:
   - mkdir build
   - cd build
